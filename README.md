@@ -1,4 +1,6 @@
-# Manage Environment Variables for PHP-FPM and Laravel on Ubuntu with NGINX
+# Doppler Environment Variables Secrets Management for Laravel with PHP-FPM and NGINX on Ubuntu
+
+![Doppler Environment Variables Secrets Management for Laravel with PHP-FPM and NGINX on Ubuntu](https://repository-images.githubusercontent.com/399783760/98fbf2ed-eab2-48cf-8be5-85672c2edcfa)
 
 This guide will show you how to use the [Doppler CLI](https://docs.doppler.com/docs/cli) to generate a `.env` file for Laravel applications.
 
