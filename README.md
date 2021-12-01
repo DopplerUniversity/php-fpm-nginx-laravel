@@ -20,7 +20,7 @@ Learn more at our [product website](https://doppler.com) or [documentation](http
 
 ## Create Project
 
-If you haven't already, the first step is to create a project in Doppler for your application. 
+If you haven't already, the first step is to create a project in Doppler for your application.
 
 Doppler works best when it is the single source of truth. This means using the Doppler CLI to fetch your application's secrets for a specific environment to then, dynamically generate the `.env` file.
 
@@ -33,7 +33,7 @@ You can create a Doppler project using the [dashboard](https://dashboard.doppler
 doppler login
 
 # 2. Create project
-doppler projects create your-app
+doppler projects create laravel
 
 # 3. Select project and environment
 doppler setup
@@ -76,6 +76,7 @@ Follow the instructions for [creating a Service Token](https://docs.doppler.com/
 Then configure the Doppler CLI on Ubuntu to use the Service Token by running:
 
 > NOTE: If multiple applications are on a single machine, change `--scope` to be the directory for each application
+
 ```sh
 # Replace "dp.st.xxx" wth your Service Token value
 doppler configure set token "dp.st.xxx" --scope /
