@@ -57,7 +57,7 @@ Then repeat this process for other environments, e.g. staging and production.
 
 ## Install Doppler CLI in Ubuntu
 
-With the .env file for each environmennt now imported, it's time to install and configure the Doppler CLI on the machines hosting your Laravel application.
+With the .env file for each environment now imported, it's time to install and configure the Doppler CLI on the machines hosting your Laravel application.
 
 To install the Doppler CLI, run:
 
@@ -97,3 +97,33 @@ doppler secrets download --no-file --format env-no-quotes > /path/to/laravel/app
 ```
 
 This command could be run during deployment, as well as in place to sync the latest version of your secrets Doppler to the existing `.env` file.
+
+## Local Development
+
+During local development, you can mount an ephemeral `.env` file so it is deleted when the process exits:
+
+
+```sh
+doppler run --mount .env -- php artisan serve
+```
+
+## Docker
+
+To run this application using Docker, first build the image locally:
+
+```sh
+docker build -t doppler/laravel .
+```
+
+Then run the container while also providing an auto-expiring Service Token:
+
+```sh
+	docker container run \
+	-it \
+	--rm \
+	--name doppler-laravel \
+	-e DOPPLER_TOKEN="$(doppler configs tokens create dev --max-age 1m --plain)" \
+	-p 8000:8000 \
+	doppler/laravel \
+	doppler run --mount .env -- php artisan serve --host 0.0.0.0 --port 8000
+```
