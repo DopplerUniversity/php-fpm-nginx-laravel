@@ -1,0 +1,5 @@
+laravel/bootstrap/cache/*
+laravel/vendor
+.DS_Store
+*.env
+volumes

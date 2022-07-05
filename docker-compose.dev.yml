@@ -1,0 +1,8 @@
+version: '3'
+services:
+    laravel:
+        command: ./bin/php-artisan-serve.sh 
+        ports:
+          - '9090:9090'
+        volumes:
+          - ./laravel/bin:/usr/src/app/bin

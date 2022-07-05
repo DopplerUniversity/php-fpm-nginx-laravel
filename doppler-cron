@@ -1,9 +1,0 @@
-# Install
-# ./doppler-cron /etc/cron.d/doppler-cron
-# crontab /etc/cron.d/doppler-cron
-
-# Uncomment to generate .env file
-# */5 * * * * /usr/src/app/dotenv-file.sh
-
-# Uncomment to generate php-fpm env vars
-# */5 * * * * /usr/src/app/dotenv-file.sh

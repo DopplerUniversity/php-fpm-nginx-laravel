@@ -1,35 +1,28 @@
 SHELL=/usr/bin/env bash
 
-IMAGE=doppler/laravel
+IMAGE=doppler/laravel-app
 CONTAINER=doppler-laravel
-PORT=9090
 
-docker-build:
-	docker build -t $(IMAGE) .
+doppler-project-init:
+	@./bin/doppler-project-init.sh
 
-docker-run:
-	docker container run \
-	-it \
-	--rm \
-	--name $(CONTAINER) \
-	-e DOPPLER_TOKEN="$$(doppler configs tokens create dev --max-age 30m --plain)" \
-	-p $(PORT):$(PORT) \
-	$(IMAGE) \
-	doppler run --mount .env -- php artisan serve --host 0.0.0.0 --port $(PORT)
+build:
+	@./bin/docker-build.sh
 
-docker-run-dev:
-	docker container run \
-	-it \
-	--rm \
-	--name $(CONTAINER) \
-	-v ${PWD}/laravel:/usr/src/app \
-	-e DOPPLER_TOKEN="$$(doppler configs tokens create dev --max-age 30m --plain)" \
-	-p $(PORT):$(PORT) \
-	$(IMAGE) \
-	bash
-# 
-# doppler secrets download --no-file --format env > .env && php artisan config:cache && php artisan serve --host 0.0.0.0 --port 9090
-# doppler secrets download --no-file --format env > .env && php artisan config:clear && php artisan config:cache && && rm .env && php artisan serve --host 0.0.0.0 --port 9090
+run:
+	doppler run -- docker compose up;doppler run -- docker compose down;
 
-docker-shell:
-	docker exec -it $(CONTAINER) bash
+run-dev:
+	doppler run -- docker compose -f docker-compose.yml -f docker-compose.dev.yml up; doppler run -- docker compose -f docker-compose.yml -f docker-compose.dev.yml down;
+
+shell:
+	docker exec -it laravel bash
+
+auto-sync-secrets:
+	@watch -n 5 docker exec laravel ./bin/sync-secrets.sh
+
+cleanup:
+	doppler run -- docker compose down
+	rm -fr ./volumes
+	docker image rm $(IMAGE)
+	doppler projects delete laravel-sample-app -y

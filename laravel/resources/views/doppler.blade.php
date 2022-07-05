@@ -26,7 +26,7 @@
                 border: 1px solid #bebebe;
                 border-spacing: 0;
                 border-radius: 8px;
-                overflow: hidden;                
+                overflow: hidden;
             }
             tr {
                 border: 1px solid #ccc;
@@ -40,23 +40,23 @@
                 border-bottom: 1px solid #bebebe;
                 border-spacing: 0;
                 width: 50%;
-        
+
             }
         </style>
     </head>
     <body class="antialiased bg-gray-100 dark:bg-gray-900">
         <div class="relative flex sm:items-center">
-            <div class="max-w-6xl pt-8 mt-8 mx-auto sm:px-6 lg:px-8" style="width:700px">
+            <div class="max-w-6xl pt-8 mt-8 mx-auto sm:px-6 lg:px-8" style="width:800px">
                 <div class="flex justify-center pt-8 sm:justify-start">
                     <a href="https://doppler.com/">
-                        <img src="https://assets.website-files.com/5de9972f49103c5df3964004/5e40fa3551f8ac66cd19f6c7_Frame%202.png" width="265px" alt="" loading="lazy" sizes="275px" srcset="https://assets.website-files.com/5de9972f49103c5df3964004/5e40fa3551f8ac66cd19f6c7_Frame%202-p-500.png 500w, https://assets.website-files.com/5de9972f49103c5df3964004/5e40fa3551f8ac66cd19f6c7_Frame%202.png 529w">                    
+                        <img src="https://assets.website-files.com/5de9972f49103c5df3964004/5e40fa3551f8ac66cd19f6c7_Frame%202.png" width="265px" alt="" loading="lazy" sizes="275px" srcset="https://assets.website-files.com/5de9972f49103c5df3964004/5e40fa3551f8ac66cd19f6c7_Frame%202-p-500.png 500w, https://assets.website-files.com/5de9972f49103c5df3964004/5e40fa3551f8ac66cd19f6c7_Frame%202.png 529w">
                     </a>
                 </div>
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-1">
                         <div class="p-6">
                             <div>
-                                <h1 class="text-lg leading-7 font-semibold text-gray-900 dark:text-white">App Configuration Vars</h1>
+                                <h1 class="text-lg leading-7 font-semibold text-gray-900 dark:text-white">App Configuration</h1>
                             </div>
                             <div>
                                 <div class="mt-4 text-gray-600 dark:text-gray-400 text-md">
@@ -68,7 +68,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($config as $key => $value) 
+                                        @foreach($config as $key => $value)
                                             <tr>
                                                 <td>{{$key}}</td>
                                                 <td>{{$value}}</td>
